@@ -28,6 +28,16 @@ app.post("/add-result", async (req, res) => {
     });
 });
 
+app.get("/get-results", (req, res) => {
+  UserDetails.find().then((result, err) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
 app.get("/", (req, res) => {
   res.send("Hi!");
 });
@@ -36,4 +46,4 @@ app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
 });
 
-module.exports = app
+module.exports = app;
